@@ -1,0 +1,31 @@
+*{margin: 0; padding: 0;}
+*{box-sizing: border-box;}
+.window{
+    width: 400px;
+    height: 300px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.images{
+    position: relative;
+}
+.images > img{
+    /* vertical-align: top; 去掉底部空隙 */
+    /* width: 100%; */
+    transition: all .5s; /*过渡*/
+    position: absolute;
+    top: 0;
+}
+.images > img.current{ /*出现状态*/
+    left: 0;
+    z-index: 1;
+}
+.images > img.enter{ /*进入状态*/
+    /* left: 100%; */
+    transform: translateX(100%);/*转换，左translateX(-100%) 上translateY(100%) 下translateY(-100%)*/
+}
+.images > img.leave{ /*离开状态*/
+    /* left: -100%; */
+    transform: translateX(-100%);
+    z-index: 1;
+}
