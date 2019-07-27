@@ -7,7 +7,7 @@ setInterval(()=>{
         })
         makeCurrent(getImage(n+1))
     n += 1
-},2000)
+},3000)
 
 
 

@@ -12,7 +12,7 @@
 .images > img{
     /* vertical-align: top; 去掉底部空隙 */
     /* width: 100%; */
-    transition: all .5s; /*过渡*/
+    transition: all 2s; /*过渡*/
     position: absolute;
     top: 0;
 }
