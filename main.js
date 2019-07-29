@@ -1,6 +1,6 @@
 let n = 3 //从第几张开始轮播
 初始化()
-setInterval(()=>{
+let timer = setInterval(()=>{
     makeLeave(getImage(n)) //模板字符串，反引号中的 ${变量} 是变量
         .one('transitionend', (e)=>{ // 变成离开状态后立刻变成进入状态 一次
             makeEnter($(e.currentTarget))
@@ -9,7 +9,21 @@ setInterval(()=>{
     n += 1
 },3000)
 
-
+// 当页面被隐藏时，浏览器会将轮播变慢
+document.addEventListener('visibilitychange', function(e){ // 可见性更改事件
+    if(document.hidden){ // 该属性表示页面是（true）否（false）隐藏
+        clearInterval(timer) // 页面隐藏，就停止轮播
+    }else{
+        timer = setInterval(()=>{
+            makeLeave(getImage(n)) //模板字符串，反引号中的 ${变量} 是变量
+                .one('transitionend', (e)=>{ // 变成离开状态后立刻变成进入状态 一次
+                    makeEnter($(e.currentTarget))
+                })
+                makeCurrent(getImage(n+1))
+            n += 1
+        },3000)
+    }
+})
 
 
 
